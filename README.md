@@ -1,6 +1,6 @@
 # ZRAM
 
-The purpose of this is to create a Systemd System Service that will configure ZRAM swap based on a multiply that you supply (default is 2). and create a service that can be started/stop
+The purpose of this is to create a Systemd System Service to manage a ZRAM swap based on a multiplier that you supply (default is 2)
 
 ## Setup
 
