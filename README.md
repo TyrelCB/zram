@@ -5,5 +5,13 @@ The purpose of this is to create a Systemd System Service to manage a ZRAM swap 
 ## Setup
 
 1. Clone Repository
+
+    `git clone git@github.com:TyrelCB/zram.git`
+
 2. cd into cloned directory
-3. run service creation python script!
+
+    `cd zram`
+  
+3. run service creation python script as **Privleged User!**
+
+    `sudo python3 zram_service_creation.py`
