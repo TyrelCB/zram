@@ -7,6 +7,7 @@
 
 
 import subprocess
+import sys
 
 
 def run_cmd(command,do_print=False):
@@ -26,13 +27,15 @@ def run_cmd(command,do_print=False):
             result = 'Failure'
     return result
 
-
-print('ZRAM multiplier? (Default = 2)')
-user_input = input()
-if user_input:
-    multiplier = int(user_input)
+if len(sys.argv) > 1:
+    multiplier = int(sys.argv[1])
 else:
-    multiplier = 2
+    print('ZRAM multiplier? (Default = 2)')
+    user_input = input()
+    if user_input:
+        multiplier = int(user_input)
+    else:
+        multiplier = 2
 
 top_info = run_cmd('top -n 1 -E g -b |head')
 total_mem = top_info.splitlines()[3].split()[3]
