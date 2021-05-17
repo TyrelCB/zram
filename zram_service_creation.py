@@ -37,6 +37,13 @@ else:
     else:
         multiplier = 2
 
+# aws mod
+cmd = 'uname -a'
+result = run_cmd(cmd)
+if '-aws' in result:
+    cmd = 'sudo apt-get -y install linux-modules-extra-aws'
+    run_cmd(cmd)
+
 top_info = run_cmd('top -n 1 -E g -b |head')
 total_mem = top_info.splitlines()[3].split()[3]
 total_mem = float(total_mem)
