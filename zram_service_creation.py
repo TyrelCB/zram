@@ -38,9 +38,11 @@ else:
         multiplier = 2
 
 # aws mod
+aws = False
 cmd = 'uname -a'
 result = run_cmd(cmd)
 if '-aws' in result:
+    aws = True
     cmd = 'sudo apt-get -y install linux-modules-extra-aws'
     run_cmd(cmd)
 
@@ -106,3 +108,6 @@ result = run_cmd('systemctl restart zram.service')
 print(result)
 result = run_cmd('systemctl status zram.service')
 print(result)
+
+if aws:
+    run_cmd('sudo systemctl reboot')
