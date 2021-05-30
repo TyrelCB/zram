@@ -2,6 +2,11 @@
 
 Create a Systemd System Service to manage a ZRAM swap based on a multiplier that you supply (default is 2)
 
+## Requirments
+
+- Python Version version 3.7+ 
+- Top Version that support -E switch 
+
 ## Setup
 
 1. Clone Repository
