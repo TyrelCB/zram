@@ -45,22 +45,23 @@ if '-aws' in result:
     aws = True
     cmd = 'sudo apt-get -y install linux-modules-extra-aws'
     run_cmd(cmd)
-
-top_info = run_cmd('top -n 1 -E g -b |head')
-total_mem = top_info.splitlines()[3].split()[3]
-total_mem = float(total_mem)
-round_up_mem = int((total_mem // 1) + (total_mem % 1 > 0))
-round_up_mem
-print('Current Memory {} GB '.format(round_up_mem))
-size = float(round_up_mem)*multiplier
-round_up_size = int((size // 1) + (size % 1 > 0))
-round_up_size
-print('ZRAM Size {} GB '.format(round_up_size))
+    round_up_size = 2
+else:
+    top_info = run_cmd('top -n 1 -E g -b |head')
+    total_mem = top_info.splitlines()[3].split()[3]
+    total_mem = float(total_mem)
+    round_up_mem = int((total_mem // 1) + (total_mem % 1 > 0))
+    round_up_mem
+    print('Current Memory {} GB '.format(round_up_mem))
+    size = float(round_up_mem)*multiplier
+    round_up_size = int((size // 1) + (size % 1 > 0))
+    round_up_size
+    print('ZRAM Size {} GB '.format(round_up_size))
 
 print('>>> Updating zram_start.sh')
 start_script = '''#!/bin/bash
 
-modprobe zram
+sudo modprobe zram
 sudo zramctl --find --size {}G
 sudo mkswap /dev/zram0
 sudo swapon /dev/zram0
