@@ -61,7 +61,7 @@ else:
 print('>>> Updating zram_start.sh')
 start_script = '''#!/bin/bash
 
-sudo modprobe zram
+modprobe zram
 sudo zramctl --find --size {}G
 sudo mkswap /dev/zram0
 sudo swapon /dev/zram0
@@ -110,5 +110,5 @@ print(result)
 result = run_cmd('systemctl status zram.service')
 print(result)
 
-if aws:
-    run_cmd('sudo systemctl reboot')
+# if aws:
+#     run_cmd('sudo systemctl reboot')
