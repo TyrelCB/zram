@@ -61,7 +61,9 @@ else:
 print('>>> Updating zram_start.sh')
 start_script = '''#!/bin/bash
 
+sleep 30
 modprobe zram
+sleep 1
 sudo zramctl --find --size {}G
 sudo mkswap /dev/zram0
 sudo swapon /dev/zram0
